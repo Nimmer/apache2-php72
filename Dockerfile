@@ -74,7 +74,7 @@ RUN rm /etc/apache2/sites-available/000-default.conf
 RUN rm /etc/apache2/sites-enabled/000-default.conf
 COPY apache2/web.conf /etc/apache2/sites-available/000-default.conf
 RUN a2ensite 000-default
-RUN a2enmod rewrite
+RUN a2enmod rewrite headers
 
 # Make run file executable
 RUN chmod a+x /run.sh
