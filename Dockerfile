@@ -12,7 +12,7 @@ CMD ["/bin/bash"]
 # Copy and add files first (to make dockerhub autobuild working: https://forums.docker.com/t/automated-docker-build-fails/22831/14)
 COPY run.sh /run.sh
 
- 
+
 RUN apt update && \
     apt -y install \
     apache2 \
@@ -32,7 +32,7 @@ RUN apt update && \
     postfix
 
 # Install NPM & NPM modules (gulp, bower)
-RUN apt-get -y install nodejs-legacy nodejs npm
+RUN apt-get -y install nodejs npm
 RUN npm install -g \
     gulp \
     bower
