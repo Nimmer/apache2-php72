@@ -9,31 +9,25 @@ RUN apk --no-cache --update add \
     apache2 \
     supervisor \
     php \
-    php-xml \
-    php-pgsql \
-    php-mysql \
-    php-mysqli \
-    php-pdo_mysql \
-    php-mcrypt \
-    php-opcache \
-    php-gd \
-    php-curl \
-    php-json \
-    php-phar \
-    php-openssl \
-    php-ctype \
-    php-zip \
-    php-dev \
-    php-iconv \
-    php-soap \
-    php-zlib \
-    php-dom \
-    php-apache2 \
-    php-bcmath \
-    php-posix \
-    php-memcache \
-    php-memcached \
-    php-imagick \
+    php7-xml \
+    php7-pgsql \
+    php7-mysqli \
+    php7-pdo_mysql \
+    php7-mcrypt \
+    php7-opcache \
+    php7-curl \
+    php7-json \
+    php7-phar \
+    php7-openssl \
+    php7-ctype \
+    php7-zip \
+    php7-iconv \
+    php7-soap \
+    php7-zlib \
+    php7-dom \
+    php7-apache2 \
+    php7-bcmath \
+    php7-posix \
     memcached \
     imagemagick \
     postfix
