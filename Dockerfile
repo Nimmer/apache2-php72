@@ -1,25 +1,32 @@
-FROM gabrieltakacs/debian-jessie:1.0.1
+FROM debian:stable
 MAINTAINER Gabriel Takács <gtakacs@gtakacs.sk>
+
+# Install common utilities
+RUN apt update && \
+    apt -y upgrade
+
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y bash zsh git grep sed curl wget tar gzip postfix ssh vim
+
+CMD ["/bin/bash"]
 
 # Copy and add files first (to make dockerhub autobuild working: https://forums.docker.com/t/automated-docker-build-fails/22831/14)
 COPY run.sh /run.sh
 
-# Install Apache2, supervisor, PHP 5.6
-RUN apt-get update && \
-    apt-get -y install \
+ 
+RUN apt update && \
+    apt -y install \
     apache2 \
     supervisor \
-    php7.2 \
-    php7.2-pgsql \
-    php7.2-mysql \
-    php7.2-mcrypt \
-    php7.2-gd \
-    php7.2-curl \
-    php7.2-json \
-    php7.2-dev \
-    php7.2-memcache \
-    php7.2-memcached \
-    php7.2-imagick \
+    php7.3 \
+    php7.3-pgsql \
+    php7.3-mysql \
+    php7.3-gd \
+    php7.3-curl \
+    php7.3-json \
+    php7.3-dev \
+    php-memcache \
+    php-memcached \
+    php-imagick \
     memcached \
     imagemagick \
     postfix
@@ -36,7 +43,7 @@ COPY ./php/php.ini /etc/php/apache2/php.ini
 # Install composer
 ENV COMPOSER_HOME=/composer
 RUN mkdir /composer \
-    && curl -sS https://getcomposer.org/download/1.2.1/composer.phar > composer.phar
+    && curl -sS https://getcomposer.org/download/1.6.3/composer.phar > composer.phar
 
 RUN mkdir -p /opt/composer \
     && mv composer.phar /usr/local/bin/composer \
