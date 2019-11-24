@@ -24,6 +24,8 @@ RUN apt update && \
     php7.3-curl \
     php7.3-json \
     php7.3-dev \
+    php7.3-mbstring \
+    php7.3-zip \
     php-memcache \
     php-memcached \
     php-imagick \
