@@ -4,36 +4,36 @@ MAINTAINER Gabriel Takács <gtakacs@gtakacs.sk>
 # Copy and add files first (to make dockerhub autobuild working: https://forums.docker.com/t/automated-docker-build-fails/22831/14)
 COPY run.sh /run.sh
 
-# Install Apache2, supervisor, PHP 5.6
+# Install Apache2, supervisor, PHP 7.2
 RUN apk --no-cache --update add \
     apache2 \
     supervisor \
-    php5 \
-    php5-xml \
-    php5-pgsql \
-    php5-mysql \
-    php5-mysqli \
-    php5-pdo_mysql \
-    php5-mcrypt \
-    php5-opcache \
-    php5-gd \
-    php5-curl \
-    php5-json \
-    php5-phar \
-    php5-openssl \
-    php5-ctype \
-    php5-zip \
-    php5-dev \
-    php5-iconv \
-    php5-soap \
-    php5-zlib \
-    php5-dom \
-    php5-apache2 \
-    php5-bcmath \
-    php5-posix \
-    php5-memcache \
-    php5-memcached \
-    php5-imagick \
+    php \
+    php-xml \
+    php-pgsql \
+    php-mysql \
+    php-mysqli \
+    php-pdo_mysql \
+    php-mcrypt \
+    php-opcache \
+    php-gd \
+    php-curl \
+    php-json \
+    php-phar \
+    php-openssl \
+    php-ctype \
+    php-zip \
+    php-dev \
+    php-iconv \
+    php-soap \
+    php-zlib \
+    php-dom \
+    php-apache2 \
+    php-bcmath \
+    php-posix \
+    php-memcache \
+    php-memcached \
+    php-imagick \
     memcached \
     imagemagick \
     postfix
@@ -45,8 +45,8 @@ RUN npm install  -g \
     gulp \
     bower
 
-# php5-fpm configuration
-COPY php5/php.ini /etc/php5/php.ini
+# php-fpm configuration
+COPY php/php.ini /etc/php/php.ini
 
 # Install composer
 ENV COMPOSER_HOME=/composer
@@ -57,6 +57,10 @@ RUN mkdir -p /opt/composer \
     && mv composer.phar /usr/local/bin/composer \
     && chmod 777 /usr/local/bin/composer
 
+RUN apk --no-cache --update add \
+    nano \
+    iputils
+    
 # Configure xdebug
 #RUN echo 'zend_extension="/usr/lib/php7/modules/xdebug.so"' >> /etc/php7/php.ini \
 #    && echo "xdebug.remote_enable=on" >> /etc/php7/php.ini \
