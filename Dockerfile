@@ -81,6 +81,8 @@ RUN chmod a+x /run.sh
 
 RUN chmod a+rw /var/log/apache2
 
+RUN composer global require hirak/prestissimo
+
 #RUN apk --no-cache --update add icu icu-libs icu-dev
 #RUN docker-php-ext-install intl
 
